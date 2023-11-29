@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Windows.Forms;
 using System.Net.Mail;
 
@@ -36,6 +29,11 @@ namespace Sternzeichen2
         public Sternzeichen2()
         {
             InitializeComponent();
+            // Füge die Event-Handler für MouseHover und MouseLeave hinzu
+            BtnExit.MouseHover += BtnExit_MouseHover;
+            BtnExit.MouseLeave += BtnExit_MouseLeave;
+            BtnKontakt.MouseHover += BtnKontakt_MouseHover;
+            BtnKontakt.MouseLeave += BtnKontakt_MouseLeave;
         }
 
         private void BtnSuchen_Click(object sender, EventArgs e)
@@ -184,6 +182,29 @@ namespace Sternzeichen2
         private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BtnExit_MouseHover(object sender, EventArgs e)
+        {
+            // Ändere den Text, wenn die Maus über den Button geht
+            BtnExit.Text = "Programm beenden";
+        }
+
+        private void BtnExit_MouseLeave(object sender, EventArgs e)
+        {
+            // Verstecke den Tooltip, wenn die Maus den Button verlässt
+            BtnExit.Text = "";
+        }
+        private void BtnKontakt_MouseHover(object sender, EventArgs e)
+        {
+            // Ändere den Text, wenn die Maus über den Button geht
+            BtnKontakt.Text = "Email Senden";
+        }
+
+        private void BtnKontakt_MouseLeave(object sender, EventArgs e)
+        {
+            // Verstecke den Tooltip, wenn die Maus den Button verlässt
+            BtnKontakt.Text = "";
         }
     }
 }
